@@ -1,0 +1,24 @@
+<p>配送先編集</p>
+<%= form_for @address do |ads| %>
+<table>
+<tr>
+    <td>郵便番号（ハイフンなし）</td>
+    <td>
+    <%= ads.text_field :postcode %>
+    </td>
+</tr>
+<tr>
+    <td>住所</td>
+    <td>
+    <%= ads.text_field :street_address %>
+    </td>
+</tr>
+<tr>
+    <td>宛名</td>
+    <td>
+    <%= ads.text_field :ship_name %>
+    </td>
+</tr>
+</table>
+    <%= ads.submit "編集する" %>
+<% end %>

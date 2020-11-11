@@ -1,0 +1,34 @@
+
+<%= render "admin/items/search", items:@items %>
+
+<p>商品一覧</p>
+    <table>
+        <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+        </tr>
+        <% @items.each do |f| %>
+        <tr>
+        <td><%= f.id %></td>
+        <td>
+        <%= link_to admin_item_path(f.id) do %>
+            <%= f.name %>
+        <% end %>
+        </td>
+        <td><%= f.without_tax %></td>
+        <td><%= f.genre.genre_name %></td>
+        <td>
+            <% if f.is_sold == false %>
+                <p>販売中</p>
+            <% else %>
+                <p>売り切れ</p>
+            <% end %>
+        </td>
+        </tr>
+        <% end %>
+    </table>
+
+    <%= link_to '商品新規登録',  new_admin_item_path %>

@@ -1,0 +1,23 @@
+<%= render "admin/items/search", items:@items %>
+<h1>会員一覧</h1>
+
+<table>
+    <tr>
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+    </tr>
+    <% @end_user.each do |f| %>
+    <tr>
+        <td><%= f.id %></td>
+        <td><%= f.first_name %><%= f.last_name %></td>
+        <td><%= f.email %></td>
+        <% if f.is_signed == true %>
+            <td>無効</td>
+        <% else %>
+            <td>有効</td>
+        <% end %>
+    </tr>
+    <% end %>
+</table>

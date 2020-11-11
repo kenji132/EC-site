@@ -1,0 +1,18 @@
+ja:
+  enums:
+    order_detail:
+      produce_status:
+        cannot_start: "着手不可"
+        waiting: "製作待ち"
+        producing: "製作中"
+        complete: "製作完了"
+    order:
+      payment_method:
+        credit: "クレジット"
+        bank: "銀行"
+      order_status:
+        waiting: "入金待ち"
+        confirm: "入金確認"
+        producing: "製作中"
+        preparing: "発送準備"
+        shipping: "発送中"

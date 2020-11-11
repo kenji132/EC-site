@@ -1,0 +1,11 @@
+<p>商品一覧</p>
+<% @items.each do |f| %>
+    <div>
+        <%= attachment_image_tag f, :image %>
+        <p>商品名</p>
+        <%= f.name %>
+        <p>税込価格</p>
+        <%= (f.without_tax*1.1).floor %>
+        <%= link_to '商品詳細', item_path(f.id) %>
+    </div>
+<% end %>

@@ -1,0 +1,66 @@
+<p>注文情報確認</p>
+<%= form_for @order, url: orders_complete_path, method: 'GET' do |f| %>
+<table>
+    <tr>
+        <th>商品名</th>
+        <th>単価（税込）</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th></th>
+    </tr>
+    <% @sum = 0 %>
+    
+    <% @cart_items.each do |cart_item| %>
+        <tr>
+            <th><%= cart_item.item.name %></th>
+            <th><%= (cart_item.item.without_tax*1.1).floor %></th>
+            <th><%= cart_item.amount %></th>
+            <th>
+                <%= (cart_item.item.without_tax*1.1).floor * cart_item.amount %>
+            </th>
+            <th>
+                <%= link_to '削除する', cart_item_path(cart_item.id), method: :delete %>
+            </th>
+        </tr>
+        <% @sum += (cart_item.item.without_tax*1.1).floor * cart_item.amount %>
+       
+    <% end %>
+</table>
+
+<table>
+    <tr>
+        <td>送料</td>
+        <td>
+        <%= @order.postage %>
+        </td>
+    </tr>
+    <tr>
+        <td>商品合計</td>
+        <td>
+        <%= @sum %>
+        </td>
+    </tr>
+    <tr>
+        <td>請求金額</td>
+        <td>
+        <%= @order.billing_amount=@order.postage.to_i+@sum.to_i %>
+        </td>
+    </tr>
+</table>
+
+<p>支払方法</p>
+<% if @order.payment_method == "credit" %>
+    <p>クレジット</p>
+<% elsif @order.payment_method == "bank" %>
+    <p>銀行振込</p>
+<% end %>
+<p>お届け先</p>
+<%= @order.postcode %>
+<%= @order.street_address %>
+<%= @order.name %>
+
+
+
+<%= f.submit "購入を確定する" , data: { confirm: '本当に購入を確定しますか' }%>
+
+<% end %>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<header>
+  <h1 class="logo">NaganoCake</h1>
+  <nav class="shop-nav">
+    <ul class="nav navbar-nav navbar-right">
+    <% if end_user_signed_in? %>
+      <li >
+        <%= link_to "ロゴ", root_path,class: "header-item"%>
+      </li>
+      <li >
+        <%= link_to "マイページ", end_users_my_page_path,class: "header-item" %>
+      </li>
+      <li>
+      <i class="fas fa-angle-down"></i>
+      </li>
+      <li >
+        <%= link_to "商品一覧", items_path,class: "header-item" %>
+      </li>
+      <li >
+        <%= link_to "カート", cart_items_path ,class: "header-item"%>
+      </li>
+      <li >
+        <%= link_to "ログアウト",destroy_end_user_session_path, method: :delete,class: "header-item" %>
+      </li>
+    <% elsif admin_signed_in? %>
+      <li >
+        <%= link_to "ロゴ",  root_path,class: "header-item"%>
+      </li>
+      <li >
+
+        <%= link_to "商品一覧",admin_items_path ,class: "header-item"%>
+      </li>
+      <li >
+        <%= link_to '会員一覧',admin_end_users_path,class: "header-item" %>
+      </li>
+      <li >
+      <%= link_to '注文履歴一覧',admin_orders_path ,class: "header-item"%>
+      </li>
+      <li >
+        <%= link_to "ジャンル一覧", admin_genres_path ,class: "header-item"%>
+      </li>
+      <li >
+        <%= link_to "ログアウト",destroy_admin_session_path, method: :delete,class: "header-item" %>
+      </li>
+    <% else %>
+      <li >
+        <%= link_to "ロゴ", root_path ,class: "header-item"%>
+      </li>
+      <li >
+        <%= link_to "商品一覧", items_path,class: "header-item" %>
+      </li>
+      <li >
+        <%= link_to "新規登録", new_end_user_registration_path ,class: "header-item"%>
+      </li>
+      <li >
+        <%= link_to "ログイン",new_end_user_session_path,class: "header-item" %>
+      </li>
+    <% end %>
+    </ul>
+  </nav>
+</header>
+<html>
+  <head>
+    <title>NaganoCake</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div class="main-visual">
+    <%= yield %>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+<%= render "admin/items/search", items:@items %>
+<%= form_for @genre, url: edit_admin_genre_path(@genre.id) do |f| %>
+    <table>
+        <td>
+        ジャンル
+        <%= f.text_field :genre_name %>
+        有効
+        <%= f.radio_button :is_effective, :ture %>
+        無効
+        <%= f.radio_button :is_effective, :false %>
+        <%= f.submit '変更を保存する' %>
+        </td>
+    </table>
+<% end %>
