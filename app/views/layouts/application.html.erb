@@ -10,9 +10,6 @@
       <li >
         <%= link_to "マイページ", end_users_my_page_path,class: "header-item" %>
       </li>
-      <li>
-      <i class="fas fa-angle-down"></i>
-      </li>
       <li >
         <%= link_to "商品一覧", items_path,class: "header-item" %>
       </li>
@@ -70,8 +67,6 @@
   </head>
 
   <body>
-  <div class="main-visual">
     <%= yield %>
-  </div>
   </body>
 </html>

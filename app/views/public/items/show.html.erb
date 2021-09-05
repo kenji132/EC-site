@@ -1,14 +1,20 @@
-<p>商品詳細</p>
-<%= attachment_image_tag @item, :image %>
-<p>商品名</p>
-<%= @item.name %>
-<p>商品説明</p>
-<%= @item.description %>
-<p>税込価格</p>
-<%= (@item.without_tax*1.1).floor %>
+<div class = "container">
+    <div class = "row">
+        <div class = "col-md-6 offset-md-2">
+            <p>商品詳細</p>
+            <%= attachment_image_tag @item, :image %>
+            <p>商品名</p>
+            <%= @item.name %>
+            <p>商品説明</p>
+            <%= @item.description %>
+            <p>税込価格</p>
+            <%= (@item.without_tax*1.1).floor %>
 
-<%= form_for @cart_item do |f| %>
-    <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10]%>
-    <%= f.hidden_field :item_id, value: @item.id %>
-    <%= f.submit %>
-<% end %>
+            <%= form_for @cart_item do |f| %>
+                <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10]%>
+                <%= f.hidden_field :item_id, value: @item.id %>
+                <%= f.submit %>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -1,54 +1,53 @@
-
-<%= render "admin/items/search", items:@items %>
-
-<p>商品新規登録</p>
-<%= form_for @item, url: admin_items_path do |i| %>
-    
-
- <%= i.attachment_field :image %>   
-
-
-    <table>
-        <tr>
-            <td>
-            商品
-            </td>
-            <td>
-            <%= i.text_field :name %>
-            </td>
-        </tr>
-        <tr>
-            <td>
-            商品説明
-            </td>
-            <td>
-            <%= i.text_area :description %>
-            </td>
-        </tr>
-        <tr>
-            <td>
-            ジャンル
-            </td>
-            <td>
-            <%= i.collection_select :genre_id, Genre.all, :id, :genre_name, include_blank: "選択して下さい" %> 
-            </td>
-        </tr>
-        <tr>
-            <td>
-            税抜価格
-            </td>
-            <td>
-            <%= i.text_field :without_tax %>
-            </td>
-        </tr>
-        <tr>
-            <td>
-            販売ステータス
-            </td>
-            <td>
-            <%= i.select :is_sold, [["販売中", "false"], ["売り切れ", "true"]], include_blank: "選択して下さい"  %>
-            </td>
-        </tr>
-    </table>
-    <%= i.submit '新規登録'%>
-<% end %>
+<div class = "container">
+    <div class = "row">
+        <div class = "col-md-6 offset-md-2">
+            <%= render "admin/items/search", items:@items %>
+            <%= form_for @item, url: admin_items_path do |i| %>
+                <%= i.attachment_field :image %>   
+                    <table>
+                        <tr>
+                            <td>
+                            商品
+                            </td>
+                            <td>
+                            <%= i.text_field :name %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            商品説明
+                            </td>
+                            <td>
+                            <%= i.text_area :description %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            ジャンル
+                            </td>
+                            <td>
+                            <%= i.collection_select :genre_id, Genre.all, :id, :genre_name, include_blank: "選択して下さい" %> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            税抜価格
+                            </td>
+                            <td>
+                            <%= i.text_field :without_tax %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            販売ステータス
+                            </td>
+                            <td>
+                            <%= i.select :is_sold, [["販売中", "false"], ["売り切れ", "true"]], include_blank: "選択して下さい"  %>
+                            </td>
+                        </tr>
+                    </table>
+                <%= i.submit '新規登録'%>
+            <% end %>
+        </div>
+    </div>
+</div>

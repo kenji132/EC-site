@@ -1,36 +1,42 @@
-<div class="login-box">
-  <h2 class="enduser-login">ログイン</h2>
+<div class = "container">
+    <div class = "row">
+        <div class = "col-md-6 offset-md-2">
+          <div class="login-box">
+            <h2 class="enduser-login">ログイン</h2>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="enduser-login-field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "enduser-login-field-email-form" %>
-    </div>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="enduser-login-field">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "enduser-login-field-email-form" %>
+              </div>
 
-    <div class="enduser-login-field">
-    <div class="column-left">
-      <%= f.label :password %><br />
-    </div>
-    <div class="column-right">
-      <%= link_to "パスワードを忘れた場合", new_password_path(resource_name)%>
-    </div>
-      <%= f.password_field :password, autocomplete: "current-password",class: "enduser-login-field-email-form" %>
-    </div>
+              <div class="enduser-login-field">
+              <div class="column-left">
+                <%= f.label :password %><br />
+              </div>
+              <div class="column-right">
+                <%= link_to "パスワードを忘れた場合", new_password_path(resource_name)%>
+              </div>
+                <%= f.password_field :password, autocomplete: "current-password",class: "enduser-login-field-email-form" %>
+              </div>
 
-    <% if devise_mapping.rememberable? %>
-      <div class="enduser-login-field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me,"ログインしたままにする" %>
-      </div>
-    <% end %>
+              <% if devise_mapping.rememberable? %>
+                <div class="enduser-login-field">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me,"ログインしたままにする" %>
+                </div>
+              <% end %>
 
-    <div class="box-login-button">
-      <%= f.submit "Log in"%>
-    </div>
-  <% end %>
-  <div class="box-new-enduser">
-      <p><span>------------</span> NaganoCakeの新しいお客様ですか？ <span>------------</span></p>
-      <%= link_to "NaganoCakeのアカウントを作成", new_registration_path(resource_name) %>
-    </div>
+              <div class="box-login-button">
+                <%= f.submit "Log in"%>
+              </div>
+            <% end %>
+            <div class="box-new-enduser">
+                <p><span>------------</span> NaganoCakeの新しいお客様ですか？ <span>------------</span></p>
+                <%= link_to "NaganoCakeのアカウントを作成", new_registration_path(resource_name) %>
+              </div>
 
-</div>  
+          </div>
+        </div>
+    </div>
+</div>

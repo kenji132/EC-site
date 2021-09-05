@@ -1,58 +1,57 @@
-<%= render "admin/items/search", items:@items %>
-<p>注文履歴詳細</p>
+<div class = "container">
+    <div class = "row">
+        <div class = "col-md-6 offset-md-2">
+            <%= render "admin/items/search", items:@items %>
+            <table>
+                <tr>
+                    <td>購入者</td>
+                    <td><%= @order.end_user.full_name %></td>
+                </tr>
+                <tr>
+                    <td>配送先</td>
+                    <td><%= @order.view_postcode_and_address_and_name2 %></td>
+                </tr>
+                <tr>
+                    <td>支払方法</td>
+                    <td><%= @order.payment_method_i18n %></td>
+                </tr>
 
-<table>
-    <tr>
-        <td>購入者</td>
-        <td><%= @order.end_user.full_name %></td>
-    </tr>
-    <tr>
-        <td>配送先</td>
-        <td><%= @order.view_postcode_and_address_and_name2 %></td>
-    </tr>
-    <tr>
-        <td>支払方法</td>
-        <td><%= @order.payment_method_i18n %></td>
-    </tr>
-
-    <tr>
-        <td>注文ステータス</td>
-        <%= form_for @order, url: admin_order_path do |order| %>
-        <td>
-            <%= order.select :order_status , Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
-        </td> 
-        <td><%= order.submit '更新' %></td>
-        <% end %>
-    </tr>
-</table>
+                <tr>
+                    <td>注文ステータス</td>
+                    <%= form_for @order, url: admin_order_path do |order| %>
+                    <td>
+                        <%= order.select :order_status , Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
+                    </td> 
+                    <td><%= order.submit '更新' %></td>
+                    <% end %>
+                </tr>
+            </table>
 
 
-<table>
-    <tr>
-        <th>商品名</th>
-        <th>単価（税込）</th>
-        <th>個数</th>
-        <th>小計</th>
-        <th>製作ステータス</th>
-        <th></th>
-    </tr>
-    <% @order_details.each do |order_detail| %>
-    <tr>
-        <td><%= order_detail.item.name %></td>
-        <td><%= order_detail.tax_price %></td>
-        <td><%= order_detail.amount %></td>
-        <td><%= order_detail.subtotal %></td>
-        <%
-=begin%>
- <%= form_for order_detail, url:admin_order_detail_path(order_detail.order_id) do |f| %> 
-<%
-=end%>
-        <%= form_for order_detail, url:admin_order_detail_path(order_detail.id) do |f| %>
-        <td>
-            <%= f.select :produce_status , OrderDetail.produce_statuses.keys.map {|k| [I18n.t("enums.order_detail.produce_status.#{k}"), k]} %>
-        </td> 
-        <td><%= f.submit '更新' %></td>
-        <% end %>
-    </tr>
-    <% end %>
-</table>
+            <table>
+                <tr>
+                    <th>商品名</th>
+                    <th>単価（税込）</th>
+                    <th>個数</th>
+                    <th>小計</th>
+                    <th>製作ステータス</th>
+                    <th></th>
+                </tr>
+                <% @order_details.each do |order_detail| %>
+                <tr>
+                    <td><%= order_detail.item.name %></td>
+                    <td><%= order_detail.tax_price %></td>
+                    <td><%= order_detail.amount %></td>
+                    <td><%= order_detail.subtotal %></td>
+                    <%= form_for order_detail, url:admin_order_detail_path(order_detail.id) do |f| %>
+                    <td>
+                        <%= f.select :produce_status , OrderDetail.produce_statuses.keys.map {|k| [I18n.t("enums.order_detail.produce_status.#{k}"), k]} %>
+                    </td> 
+                    <td><%= f.submit '更新' %></td>
+                    <% end %>
+                </tr>
+                <% end %>
+            </table>
+        </div>
+    </div>
+</div>

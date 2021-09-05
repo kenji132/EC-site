@@ -1,31 +1,25 @@
-<p>注文情報入力</p>
-<%
-=begin%>
- 
- <%= form_for @order, url: confirm_path, method: 'POST' do |order|%>  
-<%
-=end%>
- <%= form_for @order do |order|%> 
-
-<p>支払い方法</p>
-        <%= order.radio_button :payment_method, :credit %>クレジットカード
-        <%= order.radio_button :payment_method, :bank %>銀行振込
-<p>お届け先</p>
-        <%= order.radio_button :address_option, 0 %>ご自身の住所<br>
-        <%= current_end_user.postcode %> 
-        <%= current_end_user.street_address %> 
-        <%= current_end_user.last_name %><%= current_end_user.first_name %><br>
-
-        <%= order.radio_button :address_option, 1 %>登録済住所から選択<br>
-        <%= order.collection_select :order_address_id , current_end_user.addresses, :id, :view_postcode_and_address_and_name , :include_blank => "選択してください" %><br>
-        
-        <%= order.radio_button :address_option, 2 %>新しいお届け先<br>
-
-            郵便番号<%= order.text_field :postcode %><br>
-            住所<%= order.text_field :street_address %><br>
-            宛名<%= order.text_field :name %><br>
-
-        <%= order.submit "確認画面へ進む" %>
-        
-<% end %>
-
+<div class = "container">
+        <div class = "row">
+                <div class = "col-md-6 offset-md-2">
+                
+                        <p>注文情報入力</p>
+                        <%= form_for @order do |order|%> 
+                                <p>支払い方法</p>
+                                <%= order.radio_button :payment_method, :credit %>クレジットカード
+                                <%= order.radio_button :payment_method, :bank %>銀行振込
+                                <p>お届け先</p>
+                                <%= order.radio_button :address_option, 0 %>ご自身の住所<br>
+                                <%= current_end_user.postcode %> 
+                                <%= current_end_user.street_address %> 
+                                <%= current_end_user.last_name %><%= current_end_user.first_name %><br>
+                                <%= order.radio_button :address_option, 1 %>登録済住所から選択<br>
+                                <%= order.collection_select :order_address_id , current_end_user.addresses, :id, :view_postcode_and_address_and_name , :include_blank => "選択してください" %><br>
+                                <%= order.radio_button :address_option, 2 %>新しいお届け先<br>
+                                郵便番号<%= order.text_field :postcode %><br>
+                                住所<%= order.text_field :street_address %><br>
+                                宛名<%= order.text_field :name %><br>
+                                <%= order.submit "確認画面へ進む" %>
+                        <% end %>
+                </div>
+        </div>
+</div>

@@ -1,36 +1,42 @@
-<h1>登録情報編集</h1>
+<div class = "container">
+    <div class = "row">
+        <div class = "col-md-6 offset-md-2">
+            <h1>登録情報編集</h1>
 
-<%= form_for(@end_user, url:end_users_edit_path) do |f| %>
-    <table>
-    <tr>
-        <td>氏名</td>
-        <td><%= f.text_field :last_name %></td>
-        <td><%= f.text_field :first_name %></td>
-    </tr>
-    <tr>
-        <td>カナ</td>
-        <td><%= f.text_field :last_name_kana %></td>
-        <td><%= f.text_field :first_name_kana %></td>
-    </tr>
-    <tr>
-        <td>郵便番号</td>
-        <td><%= f.text_field :postcode %></td>
-    </tr>
-    <tr>
-        <td>住所</td>
-        <td><%= f.text_field :street_address %></td>
-    </tr>
-    <tr>
-        <td>電話番号</td>
-        <td><%= f.text_field :phone_number %></td>
-    </tr>
-    <tr>
-        <td>メールアドレス</td>
-        <td><%= f.text_field :email %></td>
-    </tr>
-    </table>
+            <%= form_for(@end_user, url:end_users_edit_path) do |f| %>
+                <table>
+                <tr>
+                    <td>氏名</td>
+                    <td><%= f.text_field :last_name %></td>
+                    <td><%= f.text_field :first_name %></td>
+                </tr>
+                <tr>
+                    <td>カナ</td>
+                    <td><%= f.text_field :last_name_kana %></td>
+                    <td><%= f.text_field :first_name_kana %></td>
+                </tr>
+                <tr>
+                    <td>郵便番号</td>
+                    <td><%= f.text_field :postcode %></td>
+                </tr>
+                <tr>
+                    <td>住所</td>
+                    <td><%= f.text_field :street_address %></td>
+                </tr>
+                <tr>
+                    <td>電話番号</td>
+                    <td><%= f.text_field :phone_number %></td>
+                </tr>
+                <tr>
+                    <td>メールアドレス</td>
+                    <td><%= f.text_field :email %></td>
+                </tr>
+                </table>
 
-    <%= f.submit '編集内容を保存する', class: "btn btn-primary"%>
+                <%= f.submit '編集内容を保存する', class: "btn btn-primary"%>
 
-<% end %>
-    <%= link_to '退会する',end_users_unsubscribe_path %>
+            <% end %>
+            <%= link_to '退会する',end_users_unsubscribe_path %>
+        </div>
+    </div>
+</div>

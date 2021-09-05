@@ -1,42 +1,47 @@
-<p>配送先登録/一覧</p>
-<%= form_for @address do |ads| %>
-<table>
-<tr>
-    <td>郵便番号（ハイフンなし）</td>
-    <td>
-    <%= ads.text_field :postcode %>
-    </td>
-</tr>
-<tr>
-    <td>住所</td>
-    <td>
-    <%= ads.text_field :street_address %>
-    </td>
-</tr>
-<tr>
-    <td>宛名</td>
-    <td>
-    <%= ads.text_field :ship_name %>
-    </td>
-</tr>
-</table>
-    <%= ads.submit "登録する" %>
-<% end %>
+<div class = "container">
+    <div class = "row">
+        <div class = "col-md-6 offset-md-2">
+            <%= form_for @address do |ads| %>
+            <table>
+            <tr>
+                <td>郵便番号（ハイフンなし）</td>
+                <td>
+                <%= ads.text_field :postcode %>
+                </td>
+            </tr>
+            <tr>
+                <td>住所</td>
+                <td>
+                <%= ads.text_field :street_address %>
+                </td>
+            </tr>
+            <tr>
+                <td>宛名</td>
+                <td>
+                <%= ads.text_field :ship_name %>
+                </td>
+            </tr>
+            </table>
+                <%= ads.submit "登録する" %>
+            <% end %>
 
-<table>
-<tr>
-    <th>郵便番号</th>
-    <th>住所</th>
-    <th>宛名</th>
-    <th></th>
-</tr>
-<% @addresses.each do |ads| %>
-<tr>
-    <td><%= ads.postcode %></td>
-    <td><%= ads.street_address %></td>
-    <td><%= ads.ship_name %></td>
-    <td><%= link_to '編集する', edit_address_path(ads.id) %><%= link_to '削除する', address_path(ads.id), method: :delete %></td>
+            <table>
+            <tr>
+                <th>郵便番号</th>
+                <th>住所</th>
+                <th>宛名</th>
+                <th></th>
+            </tr>
+            <% @addresses.each do |ads| %>
+            <tr>
+                <td><%= ads.postcode %></td>
+                <td><%= ads.street_address %></td>
+                <td><%= ads.ship_name %></td>
+                <td><%= link_to '編集する', edit_address_path(ads.id) %><%= link_to '削除する', address_path(ads.id), method: :delete %></td>
 
-</tr>
-<% end %>
-</table>
+            </tr>
+            <% end %>
+            </table>
+        </div>
+    </div>
+</div>
