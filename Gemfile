@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.4', '>= 5.2.4.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem "puma", ">= 4.3.8"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -68,7 +68,7 @@ gem "refile", require: "refile/rails", git: 'https://github.com/refile/refile.gi
 gem "refile-mini_magick"
 
 
-gem 'bootstrap-sass', '~> 3.3.6'
+gem "bootstrap-sass", ">= 3.4.1"
 gem 'jquery-rails'
 
 gem 'rails-i18n'
